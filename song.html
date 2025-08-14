@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about your favorite OPM song, including artist info, release date, album, and the story behind the music.">
+    <meta name="keywords" content="OPM, Original Pinoy Music, Filipino songs, Pinoy hits, Tagalog music, music details">
+    <meta name="author" content="OPM Music Archive">
+    <title>OPM Song Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1 id="song-title">Song Title</h1>
+    <p id="song-artist">by Artist</p>
+</header>
+
+<main>
+    <div class="song-details">
+        <img id="song-image" src="" alt="Song Image">
+        <ul>
+            <li><strong>Album:</strong> <span id="song-album"></span></li>
+            <li><strong>Release Year:</strong> <span id="song-year"></span></li>
+            <li><strong>Genre:</strong> <span id="song-genre"></span></li>
+            <li><strong>Duration:</strong> <span id="song-duration"></span></li>
+            <li><strong>Composer:</strong> <span id="song-composer"></span></li>
+            <li><strong>Awards:</strong> <span id="song-awards"></span></li>
+        </ul>
+        <p id="song-description"></p>
+        <blockquote id="song-lyrics"></blockquote>
+    </div>
+    <a href="index.html" class="btn">⬅ Back to List</a>
+</main>
+
+<script src="songs.js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const songId = params.get('id');
+
+    if (songId && songs[songId]) {
+        const song = songs[songId];
+        document.getElementById('song-title').textContent = song.title;
+        document.getElementById('song-artist').textContent = `by ${song.artist}`;
+        document.getElementById('song-image').src = song.image;
+        document.getElementById('song-album').textContent = song.album;
+        document.getElementById('song-year').textContent = song.year;
+        document.getElementById('song-genre').textContent = song.genre;
+        document.getElementById('song-duration').textContent = song.duration;
+        document.getElementById('song-composer').textContent = song.composer;
+        document.getElementById('song-awards').textContent = song.awards;
+        document.getElementById('song-description').textContent = song.description;
+        document.getElementById('song-lyrics').textContent = `"${song.lyrics}"`;
+    }
+</script>
+
+</body>
+</html>
